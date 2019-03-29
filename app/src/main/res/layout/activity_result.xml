@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+  <Button
+      android:id="@+id/selectPhoto"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Select Photo"
+      android:textAllCaps="false"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/takePicture"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+      android:text="Take Picture"
+      android:textAllCaps="false"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/selectPhoto" />
+
+  <Button
+      android:id="@+id/requestPermission"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+      android:text="Request Permission"
+      android:textAllCaps="false"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/takePicture" />
+
+  <Button
+      android:id="@+id/requestMultiplePermissions"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="5dp"
+      android:text="Request Multiple Permissions"
+      android:textAllCaps="false"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/requestPermission" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
