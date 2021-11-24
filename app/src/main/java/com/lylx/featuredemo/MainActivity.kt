@@ -14,5 +14,10 @@ class MainActivity : AppCompatActivity() {
     findViewById<View>(R.id.btn_activity_result).setOnClickListener {
       startActivity(Intent(this, ResultActivity::class.java))
     }
+
+    findViewById<View>(R.id.btn_notification).setOnClickListener {
+      startActivity(Intent(this, NotificationActivity::class.java))
+    }
   }
+
 }

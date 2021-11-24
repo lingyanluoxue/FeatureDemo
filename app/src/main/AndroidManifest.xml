@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lylx.featuredemo">
 
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+      android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+      android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
   <application
@@ -16,7 +19,8 @@
       android:theme="@style/AppTheme">
     <activity
         android:name=".MainActivity"
-        android:screenOrientation="portrait">
+        android:screenOrientation="portrait"
+        android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +28,11 @@
       </intent-filter>
     </activity>
     <activity
+        android:name=".NotificationActivity"
+        android:exported="false" />
+    <activity
         android:name=".ResultActivity"
+        android:parentActivityName=".MainActivity"
         android:screenOrientation="portrait" />
 
     <provider

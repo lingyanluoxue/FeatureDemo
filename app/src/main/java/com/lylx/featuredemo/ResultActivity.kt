@@ -1,13 +1,15 @@
 package com.lylx.featuredemo
 
 import android.Manifest
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.lylx.featuredemo.provider.getUriForFile
 import com.lylx.featuredemo.util.createImageFile
-import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {
 
@@ -20,11 +22,11 @@ class ResultActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_result)
 
-    selectPhoto.setOnClickListener {
+    findViewById<View>(R.id.selectPhoto).setOnClickListener {
       photoLauncher.launch(MIME_IMAGE)
     }
 
-    takePicture.setOnClickListener {
+    findViewById<View>(R.id.takePicture).setOnClickListener {
 //      Environment.getExternalStorageDirectory()?.resolve("${Environment.DIRECTORY_PICTURES}/image.png")?.let {
 //        takePictureLauncher.launch(getUriForFile(this, it))
 //      }
@@ -33,12 +35,18 @@ class ResultActivity : AppCompatActivity() {
       }
     }
 
-    requestPermission.setOnClickListener {
+    findViewById<View>(R.id.requestPermission).setOnClickListener {
       requestPermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
     }
 
-    requestMultiplePermissions.setOnClickListener {
-      requestMultiplePermissionsLauncher.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+    findViewById<View>(R.id.requestMultiplePermissions).setOnClickListener {
+      Log.d(TAG, "${ActivityCompat.shouldShowRequestPermissionRationale(this, if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)Manifest.permission.READ_MEDIA_AUDIO else Manifest.permission.READ_EXTERNAL_STORAGE)}")
+      val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+        arrayOf(Manifest.permission.READ_MEDIA_AUDIO, Manifest.permission.READ_MEDIA_VIDEO)
+      } else {
+        arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+      }
+      requestMultiplePermissionsLauncher.launch(permissions)
     }
   }
 
